@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吃什么</title>
+    <style>
+        body {
+            background-color: #eeeeee;
+        }
+
+        .main_box {
+            width: 600px;
+            height: 400px;
+            background-color: #FFF;
+            margin: 100px auto;
+            padding: 10px;
+            border-radius: 25px;
+            box-shadow: 0 0 15px 4px rgba(0, 0, 0, .3);
+        }
+
+        .main_box .main_box2 {
+            width: 580px;
+            height: 380px;
+            margin: 10px auto;
+            border-radius: 25px;
+            border: 2px solid #808080;
+        }
+
+        .main_box .res {
+            width: 580px;
+            height: 60px;
+            margin: 0 auto 0px;
+            padding: 10px 0;
+            border-radius: 15px;
+        }
+
+        .main_box .foods_box {
+            width: 580px;
+            height: 270px;
+            margin: 10px auto 10px;
+            border-radius: 15px;
+        }
+
+        .main_box .foods_box .input {
+            width: 400px;
+            height: 50px;
+            margin: 10px auto;
+        }
+
+        .main_box .foods_box .input .food_input {
+            float: left;
+            width: 300px;
+            height: 30px;
+            margin-left: 9.2px;
+            margin-top: 6.5px;
+            padding: 2px 5px;
+            outline: none;
+            border: 1.5px solid #808080;
+            border-right: none;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            font-size: 16px;
+        }
+
+        .main_box .foods_box .input .food_btn {
+            float: left;
+            width: 70px;
+            height: 37px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 6.5px;
+            border: 1.5px solid #808080;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            transition: all .3s ease-in-out;
+        }
+
+        .main_box .foods_box .hr {
+            width: 560px;
+            border-top: 1.5px dashed #808080;
+            margin: -5px auto 5px;
+        }
+
+        .main_box .foods_box .output {
+            width: 562px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        
+        .main_box .foods_box .output div {
+            float: left;
+            width: 176px;
+            height: 38px;
+            margin-top: 2px;
+            margin-right: 17px;
+            line-height: 38px;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+            transition: all .3s ease-in-out;
+        }
+
+        .main_box .foods_box .output div:hover {
+            box-shadow: 0 0 6px .5px rgba(0, 0, 0, .4);
+        }
+
+
+        .main_box .foods_box .output div:nth-child(3n+3) {
+            margin-right: 0;
+        }
+
+        .main_box .foods_box .output div .food_span {
+            float: left;
+            width: 120px;
+            height: 100%;
+            display: block;
+            overflow: hidden;
+            margin-left: 26px;
+            text-align: center;
+        }
+
+        .main_box .foods_box .output div .del {
+            float: right;
+            display: block;
+            width: 20px;
+            height: 100%;
+            color: rgba(0, 0, 0, 0);
+            cursor: pointer;
+            text-align: center;
+            margin-right: 10px;
+            transition: all .5s ease-in-out;
+        }
+
+        .main_box .foods_box .output div:hover .del {
+            color: #B0B0B0;
+        }
+
+        .main_box .res .res_box {
+            width: 560px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        .main_box .res .res_box .res_food {
+            float: left;
+            width: 300px;
+            height: 37px;
+            border-radius: 15px;
+            margin: 10px 10px 10px 73px;
+            border: 1.5px solid #808080;
+            box-shadow: 0 0 6px .6px rgba(0, 0, 0, .3);
+        }
+
+        .main_box .res .res_box .res_btn {
+            float: right;
+            width: 100px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 15px;
+            margin: 10px 73px 10px 0;
+            border: 1.5px solid #808080;
+            transition: all .3s ease-in-out;
+            box-shadow: 0 0 6px .6px rgba(0, 0, 0, .3);
+        }
+
+        .main_box .res .res_box .res_food .res_food_span {
+            display: block;
+            width: 200px;
+            height: 37px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 37px;
+            font-size: 16px;
+        }
+
+        .main_box .res .res_box .res_food .res_food_span .res_num {
+            float: right;
+            font-size: 10px;
+        }
+
+        .main_box .foods_box .input .food_btn:hover,
+        .main_box .res .res_box .res_btn:hover {
+            font-size: 18px;
+            background-color: #C0C0C0;
+        }
+
+        .main_box .hr_ro {
+            border-top: 2px dashed #808080;
+        }
+    </style>
+</head>
+<body>
+    <div class="main_box">
+        <div class="main_box2">
+            <div class="res">
+                <div class="res_box">
+                    <div id="res_food" class="res_food"></div>
+                    <button type="button" class="res_btn" onclick="resFood()">吃什么?</button>
+                </div>
+            </div>
+            <div class="hr_ro"></div>
+            <div class="foods_box">
+                <div class="input">
+                    <input type="text" id="food_input" class="food_input" placeholder="请填写需要添加的食物">
+                    <button type="button" id="food_btn" class="food_btn" onclick="addFood()">添加</button>
+                </div>
+                <div class="hr"></div>
+                <div id="output" class="output"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        num = 0;
+        foods_str = ""
+        var foods = ["KFC", "麦当劳", "香锅"]
+        function addFood() {
+            if (foods.length >= 15) {
+                alert("最大只能填写15个!");
+            } else {
+                var food = document.getElementById("food_input").value;
+                foods.push(food);
+                console.log(foods);
+                this.foods_str = "";
+                var _foods = outputFoods();
+                document.getElementById("output").innerHTML = _foods;
+            }
+        }
+        function delFood(food) {
+            if (foods.length <= 0) {
+                alert("数组为空了!");
+            } else {
+                for (let i = 0; i < foods.length; i++) {
+                    if (foods[i] == food) {
+                        foods.splice(i, 1);
+                        break;
+                    }
+                }
+                console.log(foods);
+                this.foods_str = "";
+                var _foods = outputFoods();
+                var de = document.getElementById("output");
+                de.innerHTML = _foods;
+            }
+        }
+        function outputFoods() {
+            for (let i = 0; i < foods.length; i++) {
+                foods_str += '<div class="food_div"><span class="food_span">' + foods[i] + '</span><span" class="del" onclick="delFood(\'' + foods[i] + '\')">×</span></div>';
+            }
+            console.log(foods_str);
+            return foods_str;
+        }
+        function resFood() {
+            num += 1;
+            var timestamp = new Date().getTime() % 1000;
+            var random1 = Math.round(Math.random() * foods.length);
+            var random2 = Math.round(Math.random() * foods.length);
+            var index = timestamp * random1 % foods.length + random2;
+            var _foods = '<span class="res_food_span">' + foods[index] + '<span class="res_num">' + num + '</span></span>';
+            document.getElementById("res_food").innerHTML = _foods;
+        }
+        window.onload = function() {
+            var _foods = outputFoods();
+            document.getElementById("output").innerHTML = _foods;
+        }
+    </script>
+</body>
+</html>
