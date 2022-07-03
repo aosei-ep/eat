@@ -261,7 +261,7 @@
             var timestamp = new Date().getTime() % 1000;
             var random1 = Math.round(Math.random() * foods.length);
             var random2 = Math.round(Math.random() * foods.length);
-            var index = timestamp * random1 % foods.length + random2;
+            var index = (timestamp * random1 + random2) % foods.length;
             var _foods = '<span class="res_food_span">' + foods[index] + '<span class="res_num">' + num + '</span></span>';
             document.getElementById("res_food").innerHTML = _foods;
         }
