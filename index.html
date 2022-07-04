@@ -24,33 +24,28 @@
             box-shadow: 0 0 15px 4px rgba(0, 0, 0, .3);
         }
 
-        .main_box .main_box2 {
-            width: 580px;
-            height: 380px;
-            margin: 10px auto;
-            border-radius: 25px;
-            border: 2px solid #808080;
-        }
-
         .main_box .res {
             width: 580px;
             height: 60px;
-            margin: 0 auto 0px;
+            margin: 10px auto 10px;
             padding: 10px 0;
             border-radius: 15px;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, .3);
         }
 
         .main_box .foods_box {
             width: 580px;
             height: 270px;
             margin: 10px auto 10px;
+            padding-top: 10px;
             border-radius: 15px;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, .3);
         }
 
         .main_box .foods_box .input {
             width: 400px;
             height: 50px;
-            margin: 10px auto;
+            margin: 0 auto 10px;
         }
 
         .main_box .foods_box .input .food_input {
@@ -129,7 +124,7 @@
             display: block;
             width: 20px;
             height: 100%;
-            color: rgba(0, 0, 0, 0);
+            color: #FFF;
             cursor: pointer;
             text-align: center;
             margin-right: 10px;
@@ -191,18 +186,18 @@
         }
 
         .main_box .hr_ro {
-            border-top: 2px dashed #808080;
+            width: 100%;
+            height: 20px;
+            /* border-top: 2px dashed #808080; */
         }
     </style>
 </head>
 <body>
     <div class="main_box">
-        <div class="main_box2">
             <div class="res">
                 <div class="res_box">
                     <div id="res_food" class="res_food"></div>
                     <button type="button" class="res_btn" onclick="resFood()">吃什么?</button>
-                </div>
             </div>
             <div class="hr_ro"></div>
             <div class="foods_box">
@@ -225,11 +220,17 @@
                 alert("最大只能填写15个!");
             } else {
                 var food = document.getElementById("food_input").value;
-                foods.push(food);
-                console.log(foods);
-                this.foods_str = "";
-                var _foods = outputFoods();
-                document.getElementById("output").innerHTML = _foods;
+                if (food == "") {
+                    alert("输入不能为空!")
+                } else if (foods.indexOf(food) != -1) {
+                    alert(food + "已经存在")
+                } else {
+                    foods.push(food);
+                    console.log(foods);
+                    this.foods_str = "";
+                    var _foods = outputFoods();
+                    document.getElementById("output").innerHTML = _foods;
+                }
             }
         }
         function delFood(food) {
