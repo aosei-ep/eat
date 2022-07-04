@@ -231,7 +231,7 @@
                     alert(food + "已经存在")
                 } else {
                     foods.push(food);
-                    console.log(foods);
+                    // console.log(foods);
                     this.foods_str = "";
                     var _foods = outputFoods();
                     document.getElementById("output").innerHTML = _foods;
@@ -248,7 +248,7 @@
                         break;
                     }
                 }
-                console.log(foods);
+                // console.log(foods);
                 this.foods_str = "";
                 var _foods = outputFoods();
                 var de = document.getElementById("output");
@@ -259,16 +259,22 @@
             for (let i = 0; i < foods.length; i++) {
                 foods_str += '<div class="food_div"><span class="food_span">' + foods[i] + '</span><span" class="del" onclick="delFood(\'' + foods[i] + '\')">×</span></div>';
             }
-            console.log(foods_str);
+            // console.log(foods_str);
             return foods_str;
         }
         function resFood() {
             num += 1;
-            var timestamp = new Date().getTime() % 1000;
-            var random1 = Math.round(Math.random() * foods.length);
-            var random2 = Math.round(Math.random() * foods.length);
-            var index = (timestamp * random1 + random2) % foods.length;
-            var _foods = '<span class="res_food_span">' + foods[index] + '<span class="res_num">' + num + '</span></span>';
+            var _foods = '';
+            if (foods.length == 0) {
+                _foods = '<span class="res_food_span">没有想吃的<span class="res_num">' + num + '</span></span>';
+            } else {
+                var timestamp = new Date().getTime() % 1000;
+                var random1 = Math.round(Math.random() * 50);
+                var random2 = Math.round(Math.random() * 49);
+                var index = (timestamp * random1 + random2) % foods.length;
+                _foods = '<span class="res_food_span">' + foods[index] + '<span class="res_num">' + num + '</span></span>';
+                console.log("吃 " + foods[index]);
+            }
             document.getElementById("res_food").innerHTML = _foods;
         }
         window.onload = function() {
