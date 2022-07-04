@@ -230,12 +230,14 @@
                     alert("输入不能为空!")
                 } else if (foods.indexOf(food) != -1) {
                     alert(food + "已经存在")
+                    document.getElementById("food_input").value = "";
                 } else {
                     foods.push(food);
                     // console.log(foods);
                     this.foods_str = "";
                     var _foods = outputFoods();
                     document.getElementById("output").innerHTML = _foods;
+                    document.getElementById("food_input").value = "";
                 }
             }
         }
@@ -277,6 +279,16 @@
                 console.log("吃 " + foods[index]);
             }
             document.getElementById("res_food").innerHTML = _foods;
+        }
+        document.onkeyup = function(event) {
+            let keycode = event.keyCode;
+            if (keycode == 13) {
+                // 回车键
+                addFood();
+            } else if (keycode == 220) {
+                // \键
+                resFood();
+            }
         }
         window.onload = function() {
             var _foods = outputFoods();
