@@ -1,2 +1,3 @@
 # eat
-waht to eat
+what to eat
+
